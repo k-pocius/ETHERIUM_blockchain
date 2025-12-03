@@ -3,11 +3,11 @@
 MODELIS: Kursų platforma su papildomu instruktoriaus samdymu
 
 Veikėjai:
-Studentas — perka kursus ir gali papildomai nusisamdyti instruktorių.
-Instruktorius — teikia papildomą pagalbą studentui už mokestį.
-Kursų platforma — kursų pardavėjas / tarpininkas (gauna mokėjimą už kursą, nurodo instruktorius, patvirtina kursų užbaigimą).
+Studentas — perka kursus ir gali papildomai nusisamdyti instruktorių. <br>
+Instruktorius — teikia papildomą pagalbą studentui už mokestį. <br>
+Kursų platforma — kursų pardavėjas / tarpininkas (gauna mokėjimą už kursą, nurodo instruktorius, patvirtina kursų užbaigimą).<br>
 
-Pagrindiniai procesai:
+Pagrindiniai procesai:<br>
 Studentas perka kursą, sumoka už kursus per smart contract (escrow).
 Platforma gauna pinigus, kai studentas patvirtina, kad gavo prieigą.
 Studentas gali pasirinktinai samdyti instruktorių.
@@ -22,14 +22,18 @@ Jei Instruktorius neatlieka darbo → studentas gauna grąžinimą.
 
 procesų scenarijai:
 
-Scenarijus A: Kursų pirkimas<br>
+Scenarijus A:
+
+Kursų pirkimas<br>
 Studentas pasirenka kursą.<br>
 Studentas sumoka kontraktui (escrow).<br>
 Platforma suteikia prieigą prie kurso (įkelia hash/URL).<br>
 Studentas patvirtina, kad prieiga gauta.<br>
 Kontraktas perveda sumą Platformai.<br>
 
-Scenarijus B: Instruktoriaus samdymas<br>
+Scenarijus B: 
+
+Instruktoriaus samdymas<br>
 Studentas pasirenka instruktorių.<br>
 Studentas sumoka už konsultacijas į kontraktą.<br>
 Instruktorius atlieka paslaugą.<br>
@@ -41,26 +45,31 @@ Jei platforma nesuteikia prieigos per X laiką → Student gauna refund.<br>
 Jei instruktorius neatlieka darbo per X laiką → Student gauna refund. <br>
 Platforma gali nuskaityti dalį mokesčio (jei norima). <br>
 
+![Alt text](diagram.png)
+
 
 ### Course State
-| State pavadinimas       | Reikšmė                                               | Kada naudojama                          |
-| ---                    | ---                                                   | ---                                     |
-| CourseCreated          | Studentas pasirinko kursą, dar nesumokėjo             | startas                                 |
-| CoursePaid             | Studentas sumokėjo mokestį                             | lėšos escrow'e                          |
-| CourseAccessGranted    | Platforma suteikė prieigą                              | studentas gali mokytis                  |
-| CourseCompleted        | Studentas patvirtino, kad gavo prieigą / kursai užbaigti | kursai užbaigti                         |
-| CourseRefunded         | Grąžinimas studentui                                   | jei platforma nesuteikė prieigos        |
-| CourseClosed           | Kontrakto pabaiga                                      | mokėjimas atliktas arba grąžinta        |
+| State pavadinimas      | Reikšmė                                               
+| ---                    | ---                                                   
+| CourseCreated          | Studentas pasirinko kursą            
+| CoursePaid             | Studentas sumokėjo mokestį už kursą                            
+| CourseAccessGranted    | Platforma suteikė prieigą                             
+| CourseCompleted        | Studentas patvirtino, kad gavo prieigą / kursai užbaigti 
+| CourseRefunded         | Grąžinimas studentui                                  
+| CourseClosed           | Kurso galiojimo laiko pabaiga                                    
 
 ### Instructor State
-| State pavadinimas       | Reikšmė                                               | Kada naudojama                          |
-| ---                    | ---                                                   | ---                                     |
-| InstructorNotHired     | Studentas nenusisamdė instruktoriaus                  | pradinė                                 |
-| InstructorHired        | Studentas sumokėjo instruktoriaus mokestį              | lėšos escrow'e                          |
-| HelpProvided           | Instruktorius pažymėjo, kad paslauga suteikta         | instruktorius pabaigė darbą             |
-| InstructorConfirmed    | Platforma patvirtino paslaugą                          | pasiruošta išmokėti                     |
-| InstructorRefunded     | Studentui grąžinta suma                                | pagal refund procesą                    |
-| InstructorPaid         | Instruktorius gavo apmokėjimą                          | uždaroma seka                           |
+| State pavadinimas      | Reikšmė                                               
+| ---                    | ---                                                   
+| InstructorNotHired     | Studentas nenusisamdė instruktoriaus                 
+| InstructorHired        | Studentas sumokėjo instruktoriaus mokestį              
+| HelpProvided           | Instruktorius pažymėjo, kad paslauga suteikta         
+| InstructorConfirmed    | Platforma patvirtino intruktoriaus paslaugą                         
+| InstructorRefunded     | Studentui grąžinta suma                               
+| InstructorPaid         | Instruktorius gavo apmokėjimą  
+
+
+
 
 ### Course — Student Actions
 | Function                  | Kas daro                                               | Kas gali vykdyti |
@@ -93,6 +102,7 @@ Platforma gali nuskaityti dalį mokesčio (jei norima). <br>
 | confirmInstructorService() | Platforma tvirtina instruktoriaus paslaugą           | Platform        |
 | approveRefundInstructor()  | Platforma patvirtina instruktoriaus grąžinimą        | Platform        |
 | withdrawInstructorPayment() | Instruktorius pasiima mokėjimą                       | Instructor      |
+
 
 
 
