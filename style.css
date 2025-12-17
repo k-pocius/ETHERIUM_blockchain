@@ -1,0 +1,265 @@
+/*
+ * ----------------------------------------------------
+ * GLOBALUS STILIAI: ŽEMIŠKAS, ŪKIŠKAS DIZAINAS
+ * ----------------------------------------------------
+ */
+
+ @import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Playfair+Display:wght@700&display=swap');
+
+ :root {
+     /* Žemiškos Spalvos */
+     --color-primary: #8C6A4F; /* Gilios Medžio Akcentas / Aktyvus */
+     --color-secondary: #5D7E5D; /* Prislopinta Miško Žalia (Sėkmė) */
+     --color-danger: #A85B5B; /* Prislopinta Plytų Raudona (Grąžinimas) */
+     --color-background: #FDF4E3; /* Šilta Kreminė/Baltumo (Fonas) */
+     --text-dark: #3D2C1B; /* Tamsiai ruda (Tekstas) */
+     --panel-bg: #FFFDF7; /* Švelni Balta (Blokų fonas) */
+     --border-color: #E0D4C0; /* Šviesi, medinė kraštinė */
+     --shadow-light: 0 4px 10px rgba(0, 0, 0, 0.1);
+ }
+ 
+ body {
+     font-family: 'Lora', serif;
+     background-color: var(--color-background);
+     color: var(--text-dark);
+     margin: 0;
+     padding: 0;
+     line-height: 1.6;
+     overflow-x: hidden;
+     position: relative;
+ }
+ 
+ /* Meteoritų kritimo efektas IŠJUNGTAS/Pakeistas žemišku */
+ .meteor-shower {
+     display: none; /* Paslėpiame meteoritus */
+ }
+ 
+ main {
+     max-width: 1200px;
+     margin: 30px auto;
+     padding: 20px;
+     display: grid;
+     gap: 25px; /* Didesnis tarpas tarp blokų */
+     grid-template-columns: 1fr 2fr;
+     grid-template-areas: 
+         "wallet selection"
+         "actions actions"
+         "log log";
+     position: relative;
+     z-index: 1;
+ }
+ 
+ /* HEADERIS */
+ .app-header {
+     background: var(--color-primary); /* Medžio viršus */
+     padding: 15px 50px;
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     border-bottom: 2px solid var(--text-dark);
+     box-shadow: var(--shadow-light);
+     color: var(--panel-bg); /* Šviesus tekstas ant tamsaus fono */
+ }
+ 
+ .logo {
+     font-family: 'Playfair Display', serif;
+     font-size: 2.2em;
+     font-weight: 700;
+     color: var(--panel-bg);
+ }
+ 
+ /* BENDRI PANELIAI */
+ .info-panel {
+     background-color: var(--panel-bg);
+     border: 3px solid var(--border-color);
+     border-radius: 10px;
+     padding: 25px;
+     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.15); /* Šiltas šešėlis */
+ }
+ 
+ .wallet-status-box { grid-area: wallet; }
+ .selection-box { grid-area: selection; }
+ .action-panel { grid-area: actions; }
+ .status-box { grid-area: log; }
+ 
+ /* Antraštės */
+ h2, h3, h4 {
+     color: var(--text-dark);
+     margin-top: 0;
+     margin-bottom: 15px;
+     border-bottom: 1px solid var(--border-color);
+     padding-bottom: 5px;
+ }
+ 
+ /* Mygtukai */
+ .action-button {
+     font-family: 'Lora', serif;
+     padding: 10px 18px;
+     margin: 8px 5px; /* Didesni tarpai */
+     border: 2px solid var(--text-dark);
+     border-radius: 5px;
+     cursor: pointer;
+     font-weight: 700;
+     transition: background-color 0.2s, box-shadow 0.2s, transform 0.2s;
+     background-color: var(--color-secondary);
+     color: var(--panel-bg);
+     text-transform: uppercase;
+ }
+ 
+ .action-button:hover:not(:disabled) {
+     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+     transform: translateY(-2px);
+     background-color: #4C6A4C; /* Tamsesnė žalia */
+ }
+ 
+ .action-button:disabled {
+     background-color: #E0D4C0;
+     color: #8D7B6A;
+     cursor: not-allowed;
+     box-shadow: none;
+     border-color: #B89B72;
+ }
+ 
+ .primary-button { 
+     background-color: var(--color-secondary); 
+     color: var(--panel-bg);
+ }
+ .secondary-button { 
+     background-color: var(--color-primary); 
+     color: var(--panel-bg);
+ }
+ .danger-button { 
+     background-color: var(--color-danger); 
+     color: white;
+ }
+ .danger-button:hover:not(:disabled) {
+     background-color: #8C4747;
+ }
+ 
+ /* Toggling switch for Course/Instructor */
+ .toggle-switch {
+     display: flex;
+     margin-bottom: 20px;
+     background-color: var(--border-color);
+     border-radius: 5px;
+     overflow: hidden;
+     border: 1px solid var(--color-primary);
+ }
+ 
+ .toggle-button {
+     flex-grow: 1;
+     padding: 10px 15px;
+     background-color: var(--border-color);
+     color: var(--text-dark);
+     border: none;
+     cursor: pointer;
+     transition: background-color 0.2s;
+     font-weight: 700;
+ }
+ 
+ .toggle-button.active {
+     background-color: var(--color-primary);
+     color: white;
+ }
+ 
+ .toggle-button:hover:not(.active) {
+     background-color: #D6C2A7;
+ }
+ 
+ /* Pasirinkimo panelės */
+ .selection-panel {
+     margin-top: 15px;
+ }
+ 
+ .selection-panel.hidden {
+     display: none;
+ }
+ 
+ /* Pasirinkimo tinklelis (Kursai/Instruktoriai) - PATAISYMAS čia! */
+ .options-grid {
+     display: flex;
+     flex-wrap: wrap; 
+     gap: 15px;
+     margin-top: 15px;
+     margin-bottom: 25px;
+     padding: 15px 0;
+     border-top: 1px dashed var(--border-color);
+     border-bottom: 1px dashed var(--border-color);
+ }
+ 
+ /* TURI BŪTI SU GENERUOJAMA KLASĖ: option-item ARBA option */
+ .option-item, .option { 
+     /* Padaro, kad elementas atrodytų kaip mygtukas/lentelė */
+     background-color: var(--color-background);
+     color: var(--text-dark);
+     padding: 10px 15px;
+     border-radius: 8px;
+     cursor: pointer;
+     transition: all 0.2s ease-in-out;
+     border: 2px solid var(--color-secondary); /* Akcentuojama žalia kraštinė */
+     min-width: 150px;
+     text-align: center;
+     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.05);
+ }
+ 
+ .option-item:hover, .option:hover {
+     background-color: #FCF5EC;
+     border-color: var(--color-primary); /* Medžio spalva ant užvedimo */
+     transform: translateY(-1px);
+     box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.1);
+ }
+ 
+ .option-item.selected, .option.selected {
+     border-color: var(--color-primary);
+     box-shadow: 0 0 5px rgba(140, 106, 79, 0.7);
+     background-color: #E6F0E6; /* Švelniai žalias pasirinkimas */
+     font-weight: bold;
+ }
+ 
+ /* Būsenos Indikatoriai */
+ .status-indicator {
+     padding: 3px 10px;
+     border-radius: 5px;
+     font-size: 0.9em;
+     font-weight: 700;
+ }
+ 
+ .status-indicator.connected {
+     background-color: var(--color-secondary);
+     color: white;
+ }
+ 
+ .status-indicator.disconnected {
+     background-color: var(--color-danger);
+     color: white;
+ }
+ 
+ /* Logas */
+ .log-display {
+     background-color: #F8F0E5; /* Šviesus log fonas */
+     border: 1px solid var(--border-color);
+     padding: 15px;
+     max-height: 250px;
+     overflow-y: auto;
+     font-family: monospace;
+     font-size: 0.9em;
+     border-radius: 5px;
+     color: var(--text-dark); 
+     white-space: pre-wrap;
+     box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+ }
+ 
+ .action-step {
+     margin-bottom: 15px;
+     padding-bottom: 15px;
+     border-bottom: 1px dashed var(--border-color);
+ }
+ 
+ .action-step h4 {
+     font-style: italic;
+ }
+ 
+ /* SLĖPIMAS */
+ .hidden {
+     display: none;
+ }

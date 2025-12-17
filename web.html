@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+  <meta charset="UTF-8" />
+  <title>EduChain - Mokymų Platforma</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://unpkg.com/ethers@5.7.2/dist/ethers.umd.min.js"></script>
+</head>
+<body>
+
+<div class="meteor-shower"></div> <header class="app-header">
+  <div class="logo">EduChain - Mokymų Platforma </div>
+  <button id="connectBtn" class="action-button">Prisijungti</button>
+</header>
+
+<main>
+  <section class="wallet-status-box info-panel">
+    <h3>Piniginės Būsena</h3>
+    <p><strong>Statusas:</strong> <span id="walletStatus" class="status-indicator disconnected">Atsijungęs</span></p>
+    <p><strong>Adresas:</strong> <span id="account">-</span></p>
+    <p><strong>Tinklas:</strong> <span id="network">-</span></p>
+  </section>
+
+  <section class="selection-box info-panel">
+    <h2>Paslaugos Pasirinkimas</h2>
+    
+    <div class="toggle-switch">
+        <button id="showCoursesBtn" class="toggle-button active">Kursai</button>
+        <button id="showInstructorsBtn" class="toggle-button">Instruktoriai</button>
+    </div>
+
+    <div id="courseSelectionPanel" class="selection-panel">
+        <h4>Galimi Kursai</h4>
+        <div id="courses" class="options-grid"></div>
+        <button id="buyCourseServiceBtn" class="action-button primary-button" disabled>Pirkti Kursą (<span id="courseFeeDisplay">0.01 ETH</span>)</button>
+    </div>
+
+    <div id="instructorSelectionPanel" class="selection-panel hidden">
+        <h4>Galimi Instruktoriai</h4>
+        <div id="instructors" class="options-grid"></div>
+        <button id="hireInstructorServiceBtn" class="action-button secondary-button" disabled>Samdyti Instruktorių (<span id="instructorFeeDisplay">0.005 ETH</span>)</button>
+    </div>
+  </section>
+
+  <section class="action-panel info-panel">
+    <h2>Sandorio Veiksmai</h2>
+
+    <div class="action-step">
+      <h4>Kurso eiga</h4>
+      <button id="adminConfirmAccessBtn" class="action-button" disabled>1. Patvirtinti Prieigą (Platforma)</button>
+      <button id="studentAcceptCourseBtn" class="action-button" disabled>2. Patvirtinti Kursą (Studentas)</button>
+      <button id="requestCourseRefundBtn" class="action-button danger-button" disabled>Prašyti Kurso Grąžinimo</button>
+      <button id="approveCourseRefundBtn" class="action-button" disabled>Patvirtinti Kurso Grąžinimą (Platforma)</button>
+    </div>
+
+    <div class="action-step">
+      <h4>Instruktoriaus eiga</h4>
+      <button id="markHelpProvidedBtn" class="action-button" disabled>1. Pažymėti Pagalbą (Instruktorius)</button>
+      <button id="confirmInstructorServiceBtn" class="action-button" disabled>2. Patvirtinti Paslaugą (Platforma)</button>
+      <button id="requestInstructorRefundBtn" class="action-button danger-button" disabled>Prašyti Instruktoriaus Grąžinimo</button>
+      <button id="approveInstructorRefundBtn" class="action-button" disabled>Patvirtinti Instruktoriaus Grąžinimą (Platforma)</button>
+    </div>
+  </section>
+
+  <section class="status-box info-panel">
+    <h3>Veiksmų Žurnalas</h3>
+    <pre id="statusLog" class="log-display">Laukiama...</pre>
+  </section>
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>
