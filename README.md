@@ -117,11 +117,65 @@ Deployinau<br>
 ![Alt text](remix2.png)
 
 
+5. Užduotis: Testavimas Lokaliame Tinkle (Ganache) <br>
+
+Atlikti Žingsniai:<br>
+Aplinkos Paruošimas: Atsisiųstos Truffle (užduočių vykdytojas) ir Ganache Desktop (lokalus Ethereum tinklas) versijos.<br>
+
+Konfigūracija: Pakoreguotas truffle-config.js failas, nurodant Ganache numatytąjį portą (paprastai 7545) ir nustatant reikalingą Solidity Pragma versiją 0.7.3.<br>
+
+Sutartis (CoursePlatform.sol) perkelta į contracts aplanką.<br>
+
+Sukurtas deployinimo migracijos failas migrations aplanke.<br>
+
+Ganache: Importuotas truffle-config.js.<br>
+
+Vykdyta komanda: truffle migrate --reset. Kontraktas sėkmingai deployed Ganache tinkle.<br>
+
+Funkcinis Testavimas: Sukurtas ir paleistas truffle test su testavimo scenarijais. Sėkmingai patikrinta pagrindinė logika (pirkimas, išmoka, refund).<br>
+
+Balanso Patikrinimas: Patikrinta Ganache GUI sąsaja, kuri patvirtino adresų balanso pokyčius po sėkmingų transakcijų, bei tai, kad Escrow mechanizmas veikia tinkamai.
 
 
+![Alt text](compile.png)
+
+![Alt text](deploy.png)
+
+![Alt text](test.png)
+
+![Alt text](ganache.png)
 
 
+6. Testavimas Viešajame Testiniame Tinkle (Sepolia)<br>
+   
+Atlikti Žingsniai:<br>
 
+Įdiegtas MetaMask naršyklės plėtinys, pasirinktas Sepolia Testnet tinklas.<br>
+
+Gautas Sepolia ETH (iš Faucet, pvz., Google Cloud Faucet) į tris MetaMask paskyras: Studento, Instruktoriaus ir Platformos.<br>
+
+Sukurtas Alchemy projektas, siekiant gauti API raktą (Alchemy Key). Alchemy (arba Infura) veikia kaip Ethereum mazgo tiekėjas, leidžiantis prisijungti prie Sepolia tinklo. <br>
+
+Pakoreguota truffle-config.js konfigūracija, naudojanti HDWalletProvider. <br>
+
+DApp Adresų Atnaujinimas: Migracijos faile atnaujinti student, instructor ir platform adresai į atitinkamus MetaMask Sepolia adresus. <br>
+
+Modulių Atnaujinimas: Vykdytos npm install komandos, įdiegiant reikalingus Node.js modulius (@truffle/hdwallet-provider ir kt.). <br>
+
+Vykdymas: Kontraktas deployed į Sepolia tinklą: truffle migrate --reset --network Sepolia. <br>
+
+Patikrinimas: Patvirtinta, kad kontraktas sėkmingai deployed, gavus kontrakto adresą ir patikrinus transakciją Etherscan. <br>
+
+
+![Alt text](config.png)
+
+![Alt text](deployfile.png)
+
+![Alt text](metamask1.png)
+
+![Alt text](metamask2.png)
+
+![Alt text](deployed.png)
 
 
 
