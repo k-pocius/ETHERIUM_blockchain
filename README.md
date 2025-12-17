@@ -106,4 +106,28 @@ Jei instruktorius neatlieka darbo per X laiką → Student gauna refund. <br>
 
 
 
+4. Užduotis: Realizuokite pirmąjame žingsnyje aprašytą verslo logiką išmanioje sutartyje Solidyti kalboje. <br>
+
+Contracts folderyje susikūriau naują sol failą ir ten įsikėliau savo išmanų kontraktą. <br>
+Sukompiliavau, sudėjau platformos, intruktoriaus adresus ir gwei sumas už paslaugas. <br>
+Deployinau<br>
+
+![Alt text](remix1.png)
+
+![Alt text](remix2.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
