@@ -8,16 +8,16 @@ Instruktorius — teikia papildomą pagalbą studentui už mokestį. <br>
 Kursų platforma — kursų pardavėjas / tarpininkas (gauna mokėjimą už kursą, nurodo instruktorius, patvirtina kursų užbaigimą).<br>
 
 Pagrindiniai procesai:<br>
-Studentas perka kursą, sumoka už kursus per smart contract (escrow).
-Platforma gauna pinigus, kai studentas patvirtina, kad gavo prieigą.
-Studentas gali pasirinktinai samdyti instruktorių.
-Studentas perveda papildomą mokestį į kontraktą.
-Instruktorius gauna išmoką, kai platforma patvirtina, kad konsultacija įvyko.
-Platforma patvirtina kursų suteikimą / instruktoriaus edukacinę paslaugą
-Patvirtinimas aktyvuoja mokėjimą Instruktoriui arba Platformai.
-Refund galimybė
-Jei Studentas negauna prieigos per X laiką → jam grąžinami pinigai.
-Jei Instruktorius neatlieka darbo → studentas gauna grąžinimą.
+Studentas perka kursą, sumoka už kursus per smart contract (escrow).<br>
+Platforma gauna pinigus, kai studentas patvirtina, kad gavo prieigą.<br>
+Studentas gali pasirinktinai samdyti instruktorių.<br>
+Studentas perveda papildomą mokestį į kontraktą.<br>
+Instruktorius gauna išmoką, kai platforma patvirtina, kad konsultacija įvyko.<br>
+Platforma patvirtina kursų suteikimą / instruktoriaus edukacinę paslaugą<br>
+Patvirtinimas aktyvuoja mokėjimą Instruktoriui arba Platformai.<br>
+Refund galimybė<br>
+Jei Studentas negauna prieigos per X laiką → jam grąžinami pinigai.<br>
+Jei Instruktorius neatlieka darbo → studentas gauna grąžinimą.<br>
 
 
 procesų scenarijai:
@@ -43,7 +43,7 @@ Kontraktas išmoka instruktoriui.<br>
 Scenarijus C: Refund (grąžinimai)<br>
 Jei platforma nesuteikia prieigos per X laiką → Student gauna refund.<br>
 Jei instruktorius neatlieka darbo per X laiką → Student gauna refund. <br>
-Platforma gali nuskaityti dalį mokesčio (jei norima). <br>
+
 
 ![Alt text](diagram.png)
 
@@ -53,10 +53,12 @@ Platforma gali nuskaityti dalį mokesčio (jei norima). <br>
 | ---                    | ---                                                   
 | CourseCreated          | Studentas pasirinko kursą            
 | CoursePaid             | Studentas sumokėjo mokestį už kursą                            
-| CourseAccessGranted    | Platforma suteikė prieigą                             
+| CourseAccessGranted    | Platforma suteikė prieigą   
+| CourseWaitingStudentConfirmation | platforma laukia studento patvirtinimo
 | CourseCompleted        | Studentas patvirtino, kad gavo prieigą / kursai užbaigti 
+| CourseRefundRequested  | Studentas pasirenka atsisakyti kursų
 | CourseRefunded         | Grąžinimas studentui                                  
-| CourseClosed           | Kurso galiojimo laiko pabaiga                                    
+                                 
 
 ### Instructor State
 | State pavadinimas      | Reikšmė                                               
@@ -64,7 +66,8 @@ Platforma gali nuskaityti dalį mokesčio (jei norima). <br>
 | InstructorNotHired     | Studentas nenusisamdė instruktoriaus                 
 | InstructorHired        | Studentas sumokėjo instruktoriaus mokestį              
 | HelpProvided           | Instruktorius pažymėjo, kad paslauga suteikta         
-| InstructorConfirmed    | Platforma patvirtino intruktoriaus paslaugą                         
+| InstructorServiceConfirmed    | Platforma patvirtino intruktoriaus paslaugą  
+| InstructorRefundRequested | Studentas pasirenka atsisakyti instruktoriaus paslaugų
 | InstructorRefunded     | Studentui grąžinta suma                               
 | InstructorPaid         | Instruktorius gavo apmokėjimą  
 
@@ -75,7 +78,7 @@ Platforma gali nuskaityti dalį mokesčio (jei norima). <br>
 | Function                  | Kas daro                                               | Kas gali vykdyti |
 | ---                      | ---                                                   | ---             |
 | payCourseFee()           | Studentas apmoka kursą (ETH siunčiama į escrow)       | Student         |
-| confirmCourseReceived()  | Studentas patvirtina, kad gavo prieigą                | Student         |
+| acceptCourse()  | Studentas patvirtina, kad gavo prieigą                | Student         |
 | requestRefundCourse()    | Studentas prašo grąžinimo, jei platforma nesuteikė paslaugos | Student |
 
 ### Course — Platform Actions
@@ -83,7 +86,6 @@ Platforma gali nuskaityti dalį mokesčio (jei norima). <br>
 | ---                      | ---                                                   | ---             |
 | confirmCourseAccess()    | Platforma patvirtina, kad prieiga suteikta            | Platform        |
 | approveRefundCourse()    | Platforma patvirtina grąžinimą                        | Platform        |
-| withdrawCoursePayment()  | Platforma pasiima mokėjimą po patvirtinimo            | Platform        |
 
 ### Instructor-related — Student Actions
 | Function                  | Kas daro                                               | Kas gali vykdyti |
@@ -101,7 +103,6 @@ Platforma gali nuskaityti dalį mokesčio (jei norima). <br>
 | ---                      | ---                                                   | ---             |
 | confirmInstructorService() | Platforma tvirtina instruktoriaus paslaugą           | Platform        |
 | approveRefundInstructor()  | Platforma patvirtina instruktoriaus grąžinimą        | Platform        |
-| withdrawInstructorPayment() | Instruktorius pasiima mokėjimą                       | Instructor      |
 
 
 
