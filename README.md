@@ -178,6 +178,28 @@ Patikrinimas: Patvirtinta, kad kontraktas sėkmingai deployed, gavus kontrakto a
 ![Alt text](deployed.png)
 
 
+7. Kontrakto Vykdymo Logų Peržiūra (Etherscan)
+
+![Alt text](etherscan.png)  
+
+8. Decentralizuotos Aplikacijos (DApp) Integracija <br>
+   
+Atlikti Žingsniai:<br>
+
+Front-End Sukūrimas: Sukurti HTML, CSS ir JavaScript failai.
+
+Į HTML įkelta biblioteka: <script src="https://unpkg.com/ethers@5.7.2/dist/ethers.umd.min.js"></script>.
+Ethers.js: Tai yra JavaScript biblioteka, kuri suteikia paprastą būdą bendrauti su Ethereum Blockchain ir Jūsų sutartimi. Ji leidžia prisijungti prie Metamask, siųsti transakcijas ir nuskaityti duomenis iš kontrakto.
+
+Pridėtas kontrakto Adresas JS faile, kad Ethers.js žinotų, kur yra sutartis tinkle.
+
+Pridėtas ABI (Application Binary Interface): Tai yra sutarties struktūros aprašas JSON formatu. ABI veikia kaip vertėjas. Jis pasako Ethers.js, kokias funkcijas (pvz., payCourseFee(), requestRefundInstructor()) turi sutartis, kokius argumentus jos priima ir kokius duomenis grąžina. ABI gaunamas iš build/contracts aplanko po kontrakto kompiliavimo.
+
+Funkcionalumas: Aplikacija leidžia vartotojams per MetaMask prisijungti, keisti adresus (Studentas, Instruktorius, Platforma) ir aktyvuoti visas kontrakto funkcijas, testuojant visus scenarijus.
+
+![Alt text](frontend.png)
+
+
 
 
 
