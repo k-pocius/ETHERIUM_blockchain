@@ -1,4 +1,4 @@
-# ETHERIUM_blockchain
+*kontraktas_blockchain
 
 MODELIS: Kursų platforma su papildomu instruktoriaus samdymu
 
